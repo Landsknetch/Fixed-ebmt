@@ -2,9 +2,9 @@ import {Contract, ethers} from "./ethers-5.6.esm.min.js"
 import {abi, contractAddress} from "./constants.js"
 
 const connectButton = document.getElementById("connectButton")
-const isiformButton = document.getElementById("isiformButton")
+const transferButton = document.getElementById("transferButton")
 connectButton.onclick = connect
-isiformButton.onclick = isiform
+transferButton.onclick = transfer
 
 console.log(ethers)
 console.log(abi)
@@ -23,24 +23,23 @@ async function connect()
     }
 }
 
-async function isiform()
+async function transfer()
 {
-    const lender = document.getElementById("lender").value
-    const borrower = document.getElementById("borrower").value
-    const loanAmount = parseInt(document.getElementById("loanAmount").value)
-    const payoffAmount = parseInt(document.getElementById("payoffAmount").value)
-    const loanDuration = parseInt(document.getElementById("loanDuration").value)
-
+    const ethAmount = document.getElementById("ethAmount").value
+    const destination = document.getElementById("destination").value
     if (typeof window.ethereum !== "undefined")
     {
         try
         {
             const provider = new ethers.providers.Web3Provider(window.ethereum)
             const signer = provider.getSigner()
-            const Contract = new ethers.Contract(contractAddress, abi, signer)
-            const tx = await Contract.IsiForm(lender, borrower, loanAmount, payoffAmount, loanDuration);
-            await tx.wait();
-            console.log(lender, borrower, loanAmount, payoffAmount, loanDuration);
+            ethers.utils.getAddress(destination);
+            const tx = await signer.sendTransaction({
+            to: destination,
+            value: ethers.utils.parseEther(ethAmount)
+          });
+          console.log({ ethAmount, destination });
+          console.log("tx", tx);
         }
         catch(error)
         {
@@ -48,7 +47,6 @@ async function isiform()
         }
     }
 }
-
 
 function WaitingResponse(transactionResponse, provider)
 {
