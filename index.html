@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.20.0/dist/full.css" rel="stylesheet" type="text/css"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Peminjaman</title>
+</head>
+<body>
+    <div class="navbar bg-base-100 border-b">
+        <div class="navbar-start">
+          <a class="btn btn-ghost normal-case text-xl">BMT</a>
+        </div>
+        <div class="navbar-end">
+          <button class="btn" id = "connectButton">Connect</button>
+        </div>
+    </div>
+
+    <div class="flex gap-4">
+        <!-- Drawer -->
+        <!-- <div class="drawer drawer-mobile"> -->
+        <div class="drawer-side border-r">
+          <ul class="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
+                <!-- Sidebar content here -->
+                <li><a href="/">Form Peminjaman</a></li>
+                <li><a href="/transfer.html">Transfer</a></li>
+                <li><a>History Pinjaman</a></li>
+            </ul>
+        </div>
+        <!-- </div> -->
+        <!-- End of Drawer -->
+
+        <!-- Content -->
+        <div class="content">
+                <h3 class="mt-4 font-bold text-xl">Form Peminjaman</h3>
+                <div class="form-control w-full max-w-xs">
+                    <label class="label">
+                    <span class="label-text">Address Peminjam</span>
+                    </label>
+                    <input type="text" placeholder="0x918skfjh83479" class="input input-bordered w-full input-sm max-w-xs" />
+                </div>
+                <div class="form-control w-full max-w-xs">
+                    <label class="label">
+                    <span class="label-text">Address Nasabah</span>
+                    </label>
+                    <input type="text" placeholder="0x918skfj34879" class="input input-bordered w-full input-sm max-w-xs" />
+                </div>
+                <div class="form-control w-full max-w-xs">
+                    <label class="label">
+                    <span class="label-text">Nominal Pinjaman (ETH)</span>
+                    </label>
+                    <input type="number" placeholder="1.0" class="input input-bordered w-full input-sm max-w-xs" />
+                </div>
+                <div class="form-control w-full max-w-xs">
+                    <label class="label">
+                    <span class="label-text">Nominal Angsuran (ETH)</span>
+                    </label>
+                    <input type="number" placeholder="1.0" class="input input-bordered w-full input-sm max-w-xs" />
+                </div>
+                <div class="form-control w-full max-w-xs">
+                    <label class="label">
+                    <span class="label-text">Durasi Pinjaman (bulan)</span>
+                    </label>
+                    <input type="number" placeholder="2" class="input input-bordered w-full input-sm max-w-xs" />
+                </div>
+          <button id="request" class="btn btn-active btn-primary mt-4">Ajukan</button>
+        </div>
+        <!-- End of Content -->
+    </div>
+    
+    <script src ="./index.js" type="module"></script>
+</body>
+</html>

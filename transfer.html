@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.20.0/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Transfer</title>
+</head>
+<body>
+    <div class="navbar bg-base-100 border-b">
+        <div class="navbar-start">
+          <a class="btn btn-ghost normal-case text-xl">BMT</a>
+        </div>
+        <div class="navbar-end">
+          <button class="btn" id = "connectButton">Connect</button>
+        </div>
+    </div>
+
+    <div class="flex gap-4">
+        <!-- Drawer -->
+        <!-- <div class="drawer drawer-mobile"> -->
+        <div class="drawer-side border-r">
+          <ul class="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
+                <!-- Sidebar content here -->
+                <li><a href="/">Form Peminjaman</a></li>
+                <li><a href="/transfer.html">Transfer</a></li>
+                <li><a>History Pinjaman</a></li>
+            </ul>
+        </div>
+        <!-- </div> -->
+        <!-- End of Drawer -->
+
+        <!-- Content -->
+        <div class="content">
+          <h3 class="mt-4 font-bold text-xl">Transfer</h3>
+          <div class="form-control w-full max-w-xs">
+              <label class="label">
+              <span class="label-text">Address Tujuan</span>
+              </label>
+              <input type="text" placeholder="0x918skfjh83479" class="input input-bordered w-full input-sm max-w-xs" />
+          </div>
+          <div class="form-control w-full max-w-xs">
+              <label class="label">
+              <span class="label-text">Nominal (ETH)</span>
+              </label>
+              <input type="number" id="ethAmount" placeholder="0.1 Eth" class="input input-bordered w-full input-sm max-w-xs" />
+          </div>
+          <div class="form-control w-full max-w-xs">
+              <label class="label">
+              <span class="label-text">Catatan</span>
+              </label>
+              <textarea name="catatan" id="catatan" placeholder="Buat bayar utang dll" class="textarea textarea-bordered" cols="30" rows="5"></textarea>
+          </div>
+          <button id="fundButton" class="btn btn-active btn-primary mt-4">Transfer</button>
+          <button class="btn block btn-outline btn-primary mt-4">Bayar Angsuran</button>
+          <span class="text-sm italic">*Tombol ini digunakan untuk membayar angsuran yang sedang berlaku</span>
+        </div>
+        <!-- End of Content -->
+    </div>
+
+    <script src ="./index.js" type="module"></script>
+</body>
+</html>
