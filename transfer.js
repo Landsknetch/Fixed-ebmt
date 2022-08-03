@@ -3,6 +3,7 @@ import {abi, contractAddress} from "./constants.js"
 
 const connectButton = document.getElementById("connectButton")
 const transferButton = document.getElementById("transferButton")
+const catatan = document.getElementById("catatan")
 connectButton.onclick = connect
 transferButton.onclick = transfer
 
@@ -34,11 +35,17 @@ async function transfer()
             const provider = new ethers.providers.Web3Provider(window.ethereum)
             const signer = provider.getSigner()
             ethers.utils.getAddress(destination);
-            const tx = await signer.sendTransaction({
-            to: destination,
-            value: ethers.utils.parseEther(ethAmount)
-          });
-          console.log({ ethAmount, destination });
+
+            const tx = await signer.sendTransaction
+            ({
+                to: destination,
+                value: ethers.utils.parseEther(ethAmount),
+                // data : catatan.value
+            });
+            // transferButton.addEventListener('click',() => {
+            //     transfer({message : catatan.value})
+            //   })
+          console.log({ ethAmount, destination,});
           console.log("tx", tx);
         }
         catch(error)

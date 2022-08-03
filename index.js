@@ -14,8 +14,20 @@ async function connect()
 {
     if (typeof window.ethereum !== "undefined")
     {
+        // Record the time immediately before running a task.
+        performance.mark('myTask:start');
+        //Connection Task Begin
         await window.ethereum.request({method: "eth_requestAccounts"})
         connectButton.innerHTML = "Connected with MEtamask"
+        // Record the time immediately after running a task.
+        performance.mark('myTask:end');
+        // Measure the delta between the start and end of the task
+        performance.measure('myTask', 'myTask:start', 'myTask:end');
+        console.log(performance)
+        const entries = performance.getEntriesByType("mark");
+        for (const entry of entries) {
+        console.table(entry.toJSON());
+        }
     }
     else
     {
@@ -38,9 +50,21 @@ async function isiform()
             const provider = new ethers.providers.Web3Provider(window.ethereum)
             const signer = provider.getSigner()
             const Contract = new ethers.Contract(contractAddress, abi, signer)
+
+            performance.mark('myTask:start');
+            //Form Send Start
             const tx = await Contract.IsiForm(lender, borrower, loanAmount, payoffAmount, loanDuration);
             await tx.wait();
             console.log(lender, borrower, loanAmount, payoffAmount, loanDuration);
+            // Record the time immediately after running a task.
+            performance.mark('myTask:end');
+            // Measure the delta between the start and end of the task
+            performance.measure('myTask', 'myTask:start', 'myTask:end');
+            console.log(performance)
+            const entries = performance.getEntriesByType("mark");
+            for (const entry of entries) {
+            console.table(entry.toJSON());
+            }
         }
         catch(error)
         {
@@ -59,6 +83,7 @@ function WaitingResponse(transactionResponse, provider)
         {
             console.log('Completed ${transactionReceipt.confirmation} confirmation')
         })
-        resolve()
+        resolve
+        ()
     })
 }
