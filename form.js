@@ -1,7 +1,5 @@
 import {ethers} from "./ethers-5.6.esm.min.js"
 
-
-
 const sending = document.getElementById("sending")
 const inputfield = document.getElementById("message") 
 

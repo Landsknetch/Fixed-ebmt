@@ -36,17 +36,16 @@ async function transfer()
             const signer = provider.getSigner()
             ethers.utils.getAddress(destination);
 
-            const tx = await signer.sendTransaction
+            const txhash = await signer.sendTransaction
             ({
                 to: destination,
                 value: ethers.utils.parseEther(ethAmount),
-                // data : catatan.value
             });
             // transferButton.addEventListener('click',() => {
             //     transfer({message : catatan.value})
             //   })
           console.log({ ethAmount, destination,});
-          console.log("tx", tx);
+          console.log("tx", txhash);
         }
         catch(error)
         {

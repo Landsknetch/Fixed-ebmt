@@ -3,6 +3,8 @@ import {abi, contractAddress} from "./constants.js"
 
 const connectButton = document.getElementById("connectButton")
 const isiformButton = document.getElementById("isiformButton")
+// const InputDataDecoder = require('ethereum-input-data-decoder');
+// const decoder = new InputDataDecoder(`./constants.js`);
 connectButton.onclick = connect
 isiformButton.onclick = isiform
 
@@ -51,15 +53,15 @@ async function isiform()
             const signer = provider.getSigner()
             const Contract = new ethers.Contract(contractAddress, abi, signer)
 
-            performance.mark('myTask:start');
+            performance.mark('ajukan:start');
             //Form Send Start
             const tx = await Contract.IsiForm(lender, borrower, loanAmount, payoffAmount, loanDuration);
             await tx.wait();
             console.log(lender, borrower, loanAmount, payoffAmount, loanDuration);
             // Record the time immediately after running a task.
-            performance.mark('myTask:end');
+            performance.mark('ajukan:end');
             // Measure the delta between the start and end of the task
-            performance.measure('myTask', 'myTask:start', 'myTask:end');
+            performance.measure('ajukan', 'ajukan:start', 'ajukan:end');
             console.log(performance)
             const entries = performance.getEntriesByType("mark");
             for (const entry of entries) {
