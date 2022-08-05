@@ -1,0 +1,10 @@
+{
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+  "dependencies": {
+    "ethereum-input-data-decoder": "^0.4.2",
+    "mongoose": "^6.5.1",
+    "prettierrc": "^0.0.0-5"
+  }
+}

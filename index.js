@@ -1,16 +1,33 @@
 import {Contract, ethers} from "./ethers-5.6.esm.min.js"
 import {abi, contractAddress} from "./constants.js"
+import mongoose from './mongoose.js'
+
 
 const connectButton = document.getElementById("connectButton")
 const isiformButton = document.getElementById("isiformButton")
-// const InputDataDecoder = require('ethereum-input-data-decoder');
-// const decoder = new InputDataDecoder(`./constants.js`);
 connectButton.onclick = connect
 isiformButton.onclick = isiform
 
 console.log(ethers)
 console.log(abi)
 console.log(contractAddress)
+
+const Loan = mongoose.model('Loan', {
+    lender_address: String,
+    borrower_address: String,
+    loan_amount: Number,
+    payoff_amount: Number,
+    loan_duration : Number
+});
+
+const loan = new Loan({
+    lender_address: '0x093434dEc270A41f80Bd088b69a5712c16Ac7edc',
+    borrower_address:'0x613e80fdea3C2797c0F922Fb7d5c2742F619Ba6d',
+    loan_amount: 10,
+    payoff_amount: 2,
+    loan_duration : 5
+});
+
 
 async function connect()
 {
@@ -67,6 +84,7 @@ async function isiform()
             for (const entry of entries) {
             console.table(entry.toJSON());
             }
+            loan.save().then(() => console.log('Loan recorded'));
         }
         catch(error)
         {
