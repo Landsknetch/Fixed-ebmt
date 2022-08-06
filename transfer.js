@@ -36,14 +36,22 @@ async function transfer()
             const signer = provider.getSigner()
             ethers.utils.getAddress(destination);
 
+            performance.mark('transfer:start');
+            //Form Send Start
             const txhash = await signer.sendTransaction
             ({
                 to: destination,
                 value: ethers.utils.parseEther(ethAmount),
             });
-            // transferButton.addEventListener('click',() => {
-            //     transfer({message : catatan.value})
-            //   })
+            // Record the time immediately after running a task.
+            performance.mark('transfer:end');
+            // Measure the delta between the start and end of the task
+            performance.measure('transfer', 'transfer:start', 'transfer:end');
+            console.log(performance)
+            const entries = performance.getEntriesByType("mark");
+            for (const entry of entries) {
+            console.table(entry.toJSON());
+            }
           console.log({ ethAmount, destination,});
           console.log("tx", txhash);
         }
