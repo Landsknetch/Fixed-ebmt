@@ -3,7 +3,6 @@ import {abi, contractAddress} from "./constants.js"
 
 const connectButton = document.getElementById("connectButton")
 const transferButton = document.getElementById("transferButton")
-const catatan = document.getElementById("catatan")
 connectButton.onclick = connect
 transferButton.onclick = transfer
 
