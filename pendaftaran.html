@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.20.0/dist/full.css" rel="stylesheet" type="text/css"/>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="./index.js" type="module"></script>
-    <title>Peminjaman</title>
+    <script src="./pendaftaran.js" type="module"></script>
+    <!-- <script src="./depo_with.js" type="module"></script> -->
+    <title>Pendaftaran</title>
 </head>
 <body>
     <div class="navbar bg-base-100 border-b">
@@ -37,38 +38,37 @@
 
         <!-- Content -->
         <div class="content">
-                <h3 class="mt-4 font-bold text-xl">Form Peminjaman</h3>
+                <h3 class="mt-4 font-bold text-xl">Form Pendaftaran</h3>
                 <div class="form-control w-full max-w-xs">
                     <label class="label">
-                    <span class="label-text">Address Peminjam</span>
+                    <span class="label-text">Nama Lengkap</span>
                     </label>
-                    <input required type="text" id ="lender" placeholder="0x918skfjh83479" class="input input-bordered w-full input-sm max-w-xs" />
+                    <input required type="text" id ="nama" placeholder="Pianist" class="input input-bordered w-full input-sm max-w-xs" />
                 </div>
                 <div class="form-control w-full max-w-xs">
                     <label class="label">
-                    <span class="label-text">Address Nasabah</span>
+                    <span class="label-text">Kota Domisil</span>
                     </label>
-                    <input required type="text" id ="borrower" placeholder="0x918skfj34879" class="input input-bordered w-full input-sm max-w-xs" />
+                    <input required type="text" id ="kota" placeholder="Jakarta Pusat" class="input input-bordered w-full input-sm max-w-xs" />
                 </div>
                 <div class="form-control w-full max-w-xs">
                     <label class="label">
-                    <span class="label-text">Nominal Pinjaman (ETH)</span>
+                    <span class="label-text">Gaji perbulan (Rupiah)</span>
                     </label>
-                    <input required type="number" id ="loanAmount" placeholder="1.0" class="input input-bordered w-full input-sm max-w-xs" />
+                    <input required type="number" id ="gaji" placeholder="Rp 3.000.000" class="input input-bordered w-full input-sm max-w-xs" />
                 </div>
                 <div class="form-control w-full max-w-xs">
                     <label class="label">
-                    <span class="label-text">Nominal Angsuran (ETH)</span>
+                    <span class="label-text">Account Address (Metamask)</span>
                     </label>
-                    <input required type="number" id ="payoffAmount" placeholder="1.0" class="input input-bordered w-full input-sm max-w-xs" />
+                    <input required type="text" id ="anggota" placeholder="0xTK04...FTE" class="input input-bordered w-full input-sm max-w-xs" />
                 </div>
-                <div class="form-control w-full max-w-xs">
-                    <label class="label">
-                    <span class="label-text">Durasi Pinjaman (bulan)</span>
-                    </label>
-                    <input required type="number" id ="loanDuration" placeholder="2" class="input input-bordered w-full input-sm max-w-xs" />
-                </div>
-                <button type="submit" class="btn btn-active btn-primary mt-4" id="isiformButton">Ajukan</button>      
+                <label>Pendaftaran Anggota akan mengurangi eth anda sebesar</label>
+                <p>Simpanan Pokok   : 0.3 eth</p>
+                <p>Simpanan Wajib   : 0.1 eth x 12 (bulan)</p>
+                <p></p>
+                <button type="submit" class="btn btn-active btn-primary mt-4" id="daftarButton">Ajukan</button>
+                <button type="submit" class="btn btn-active btn-primary mt-4" id="signButton">Serahkan Uang Simpanan</button>
         </div>
         <!-- End of Content -->
     </div>

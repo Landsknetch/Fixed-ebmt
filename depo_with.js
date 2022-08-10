@@ -9,6 +9,7 @@ connectButton.onclick = connect
 balanceButton.onclick = getBalance
 depositButton.onclick = deposit
 withdrawButton.onclick = withdrawMoney
+// signButton.onclick = transfer
 
 async function connect()
 {
@@ -56,6 +57,31 @@ async function deposit() {
       depositButton.innerHTML = "Please install MetaMask"
     }
   }
+
+//   async function transfer()
+// {
+//     const ethAmount = "1.5"
+//     if (typeof window.ethereum !== "undefined")
+//     {
+//         const provider = new ethers.providers.Web3Provider(window.ethereum)
+//         const signer = provider.getSigner()
+//         const contract = new ethers.Contract(contractAddress, abi, signer)
+//             try {
+//                 const transactionResponse = await contract.deposit
+//                     ({
+//                         value: ethers.utils.parseEther(ethAmount),
+//                     })
+//                 console.log({ ethAmount});
+//                 console.log("tx", txhash);
+//                 }
+//         catch(error)
+//         {
+//             console.log(error)
+//         }
+//     }
+// }
+
+
 
   async function withdrawMoney() {
     console.log(`Withdrawing...`)

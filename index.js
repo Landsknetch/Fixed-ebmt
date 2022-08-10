@@ -51,20 +51,9 @@ async function isiform()
             const signer = provider.getSigner()
             const Contract = new ethers.Contract(contractAddress, abi, signer)
 
-            performance.mark('ajukan:start');
-            //Form Send Start
             const tx = await Contract.IsiForm(lender, borrower, loanAmount, payoffAmount, loanDuration);
             await tx.wait();
             console.log(lender, borrower, loanAmount, payoffAmount, loanDuration);
-            // Record the time immediately after running a task.
-            performance.mark('ajukan:end');
-            // Measure the delta between the start and end of the task
-            performance.measure('ajukan', 'ajukan:start', 'ajukan:end');
-            console.log(performance)
-            const entries = performance.getEntriesByType("mark");
-            for (const entry of entries) {
-            console.table(entry.toJSON());
-            }
             loan.save().then(() => console.log('Loan recorded'));
         }
         catch(error)
