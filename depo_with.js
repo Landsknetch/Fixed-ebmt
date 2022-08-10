@@ -8,7 +8,7 @@ const withdrawButton = document.getElementById("withdrawButton")
 connectButton.onclick = connect
 balanceButton.onclick = getBalance
 depositButton.onclick = deposit
-withdrawButton.onclick = withdrawMoney
+withdrawButton.onclick = withdraw
 // signButton.onclick = transfer
 
 async function connect()
@@ -58,49 +58,23 @@ async function deposit() {
     }
   }
 
-//   async function transfer()
-// {
-//     const ethAmount = "1.5"
-//     if (typeof window.ethereum !== "undefined")
-//     {
-//         const provider = new ethers.providers.Web3Provider(window.ethereum)
-//         const signer = provider.getSigner()
-//         const contract = new ethers.Contract(contractAddress, abi, signer)
-//             try {
-//                 const transactionResponse = await contract.deposit
-//                     ({
-//                         value: ethers.utils.parseEther(ethAmount),
-//                     })
-//                 console.log({ ethAmount});
-//                 console.log("tx", txhash);
-//                 }
-//         catch(error)
-//         {
-//             console.log(error)
-//         }
-//     }
-// }
-
-
-
-  async function withdrawMoney() {
-    console.log(`Withdrawing...`)
-    if (typeof window.ethereum !== "undefined") {
-      const provider = new ethers.providers.Web3Provider(window.ethereum)
-      await provider.send('eth_requestAccounts', [])
-      const signer = provider.getSigner()
-      const contract = new ethers.Contract(contractAddress, abi, signer)
-      try {
-        const transactionResponse = await contract.withdrawMoney()
-        value: ethers.utils.parseEther(ethAmount),
-        await listenForTransactionMine(transactionResponse, provider)
-      } catch (error) {
-        console.log(error)
-      }
-    } else {
-      withdrawButton.innerHTML = "Please install MetaMask"
+async function withdraw() {
+  console.log(`Withdrawing...`)
+  if (typeof window.ethereum !== "undefined") {
+    const provider = new ethers.providers.Web3Provider(window.ethereum)
+    await provider.send('eth_requestAccounts', [])
+    const signer = provider.getSigner()
+    const contract = new ethers.Contract(contractAddress, abi, signer)
+    try {
+      const transactionResponse = await contract.withdraw()
+      await listenForTransactionMine(transactionResponse, provider)
+    } catch (error) {
+      console.log(error)
     }
+  } else {
+    withdrawButton.innerHTML = "Please install MetaMask"
   }
+}
 
   function listenForTransactionMine(transactionResponse, provider) {
     console.log(`Mining ${transactionResponse.hash}`)
